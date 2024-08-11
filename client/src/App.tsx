@@ -1,10 +1,11 @@
 import React from "react";
-import "./App.css";
 
 const App: React.FunctionComponent = () => {
   return (
-    <div className="app">
-      <h4>Path Finding vizualizer</h4>
+    <div>
+      <span className="text-3xl font-bold underline">
+        Path Finding vizualizer
+      </span>
     </div>
   );
 };
