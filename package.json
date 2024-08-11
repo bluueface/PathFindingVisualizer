@@ -1,0 +1,30 @@
+{
+  "name": "pathfindingvisualizer",
+  "version": "1.0.0",
+  "author": "Aziz Ouadoud",
+  "license": "ISC",
+  "scripts": {
+    "lint": "eslint 'client/src/**/*.{ts,tsx}' 'server/src/**/*.{ts,js}'",
+    "lint:fix": "eslint 'client/src/**/*.{ts,tsx}' 'server/src/**/*.{ts,js}' --fix",
+    "prettier": "prettier --write 'client/src/**/*.{ts,tsx}' 'server/src/**/*.{ts,js}'",
+    "prettier:check": "prettier --check 'client/src/**/*.{ts,tsx}' 'server/src/**/*.{ts,js}'",
+    "client": "npm run start --prefix client",
+    "server": "nodemon --watch server/src --ext ts,js,json --exec ts-node server/src/app.ts",
+    "start": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.0.1",
+    "@typescript-eslint/parser": "^8.0.1",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
