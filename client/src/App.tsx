@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 import { VisualizerProvider } from "./context/VisualizerContext";
 import { TileProvider } from "./context/TileContext";
 import { SpeedProvider } from "./context/SpeedContext";
-import { GridComponent } from "./components/Grid";
+import GridComponent from "./components/Grid";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-const App: React.FunctionComponent = () => {
+const App = () => {
+  const isVisualizationRunningRef = useRef(false);
+
   return (
     <VisualizerProvider>
       <TileProvider>
         <SpeedProvider>
           <div className="h-screen w-screen flex flex-col">
-            <GridComponent />
+            <Header />
+            <GridComponent
+              isVisualizationRunningRef={isVisualizationRunningRef}
+            />
+            <Footer />
           </div>
         </SpeedProvider>
       </TileProvider>

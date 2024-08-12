@@ -1,6 +1,11 @@
-export type Algorithm = "DIJKSTRA" | "BFS";
+export type Algorithm = "DIJKSTRA" | "A_STAR" | "BFS" | "DFS";
 
-export type Maze = "NONE" | "RANDOM";
+export type Maze = "NONE" | "BINARY_TREE" | "RECURSIVE_DIVISION";
+
+export type MazeSelect = {
+  name: string;
+  value: Maze;
+};
 
 export type Tile = {
   row: number;
@@ -17,3 +22,8 @@ export type Tile = {
 export type Grid = Tile[][];
 
 export type Speed = 2 | 1 | 0.5;
+
+export type SpeedSelect = {
+  name: string;
+  value: Speed;
+};
