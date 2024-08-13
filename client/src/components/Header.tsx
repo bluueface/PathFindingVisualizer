@@ -1,19 +1,13 @@
-import { MutableRefObject, useState } from "react";
+import { MutableRefObject, useEffect, useState } from "react";
 import { useTile } from "../hooks/useTile";
 import { useVisualizer } from "../hooks/useVisualizer";
-import {
-  ALGORITHMS,
-  EXTENDED_SLEEP_TIME,
-  SLEEP_TIME,
-  SPEEDS,
-} from "../utils/constants";
+import { ALGORITHMS, SPEEDS } from "../utils/constants";
 import Select from "./Select";
 import { useSpeed } from "../hooks/useSpeed";
-import { Algorithm, Speed } from "../utils/types";
+import { Algorithm, Result, Speed, Tile } from "../utils/types";
 import PlayButton from "./PlayButton";
-import { resetGrid } from "../utils/helpers";
-import { runVisualizer } from "../utils/runVisualizer";
-import { animatePath } from "../utils/animatePath";
+import { isEqual, resetGrid } from "../utils/helpers";
+import { animatePath, animateTraversedTile } from "../utils/animate";
 
 interface Props {
   isVisualizationRunningRef: MutableRefObject<boolean>;
@@ -22,6 +16,7 @@ interface Props {
 const Header: React.FunctionComponent<Props> = (props) => {
   const { isVisualizationRunningRef } = props;
 
+  const [ws, setWs] = useState<WebSocket | null>(null);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const {
     grid,
@@ -34,38 +29,64 @@ const Header: React.FunctionComponent<Props> = (props) => {
   const { startTile, endTile } = useTile();
   const { speed, setSpeed } = useSpeed();
 
-  const handlerRunVisualizer = () => {
+  const setVariables = () => {
+    const newGrid = grid.slice();
+    setGrid(newGrid);
+    setIsGraphVisualized(true);
+    setIsDisabled(false);
+    isVisualizationRunningRef.current = false;
+  };
+
+  const animatePathThenSetVariables = async (path: Tile[]) => {
+    await animatePath(path, startTile, endTile);
+    setIsDisabled(true);
+    isVisualizationRunningRef.current = true;
+    setVariables();
+  };
+
+  useEffect(() => {
+    const socket = new WebSocket("ws://localhost:8081");
+
+    setWs(socket);
+
+    socket.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data) as Result;
+        const { type } = data;
+
+        if (type === "traversed") {
+          const { currentTile } = data;
+          if (
+            currentTile &&
+            !isEqual(currentTile, startTile) &&
+            !isEqual(currentTile, endTile)
+          ) {
+            animateTraversedTile(currentTile);
+          }
+        }
+
+        if (type === "path") {
+          const { path } = data;
+          if (path) {
+            animatePathThenSetVariables(path);
+          }
+        }
+      } catch (error) {
+        throw Error(`Error parsing the received message: ${error}`);
+      }
+    };
+  }, []);
+
+  const runVisualizer = () => {
     if (isGraphVisualized) {
       setIsGraphVisualized(false);
       resetGrid(grid.slice(), startTile, endTile);
       return;
     }
 
-    // run the algorithm
-    const { traversedTiles, path } = runVisualizer(
-      algorithm,
-      grid,
-      startTile,
-      endTile
-    );
-
-    animatePath(traversedTiles, path, startTile, endTile, speed);
-    setIsDisabled(true);
-    isVisualizationRunningRef.current = true;
-
-    setTimeout(
-      () => {
-        const newGrid = grid.slice();
-        setGrid(newGrid);
-        setIsGraphVisualized(true);
-        setIsDisabled(false);
-        isVisualizationRunningRef.current = false;
-      },
-      SLEEP_TIME * (traversedTiles.length + SLEEP_TIME * 2) +
-        EXTENDED_SLEEP_TIME *
-          (path.length + 60) *
-          SPEEDS.find((s) => s.value === speed)!.value
-    );
+    if (ws) {
+      ws.send(JSON.stringify({ grid, startTile, endTile, speed }));
+    }
   };
 
   return (
@@ -90,7 +111,7 @@ const Header: React.FunctionComponent<Props> = (props) => {
           <PlayButton
             isDisabled={isDisabled}
             isGraphVisualized={isGraphVisualized}
-            handlerRunVisualizer={handlerRunVisualizer}
+            runVisualizer={runVisualizer}
           />
         </div>
       </div>

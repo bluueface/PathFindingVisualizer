@@ -1,10 +1,3 @@
-export type Algorithm = "DIJKSTRA" | "A_STAR" | "BFS" | "DFS";
-
-export type AlgorithmSelect = {
-  name: string;
-  value: Algorithm;
-};
-
 export type Tile = {
   row: number;
   col: number;
@@ -19,12 +12,7 @@ export type Tile = {
 
 export type Grid = Tile[][];
 
-export type Speed = 10 | 5 | 0;
-
-export type SpeedSelect = {
-  name: string;
-  value: Speed;
-};
+export type Speed = 10 | 5 | 0.5;
 
 export type Result = {
   type: "traversed" | "path";

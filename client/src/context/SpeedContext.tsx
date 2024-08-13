@@ -11,7 +11,7 @@ export const SpeedContext = createContext<SpeedContextInterface | undefined>(
 );
 
 export const SpeedProvider = ({ children }: { children: ReactNode }) => {
-  const [speed, setSpeed] = useState<Speed>(0.5);
+  const [speed, setSpeed] = useState<Speed>(0);
 
   return (
     <SpeedContext.Provider

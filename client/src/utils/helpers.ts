@@ -1,4 +1,4 @@
-import { Max_COLS, MAX_ROWS, TILE_STYLE } from "./constants";
+import { INFINITY, Max_COLS, MAX_ROWS, TILE_STYLE } from "./constants";
 import { Grid, Tile } from "./types";
 
 const createRow = (row: number, starTile: Tile, endTile: Tile) => {
@@ -11,7 +11,7 @@ const createRow = (row: number, starTile: Tile, endTile: Tile) => {
       isEnd: row === endTile.row && col === endTile.col,
       isWall: false,
       isPath: false,
-      distance: Infinity,
+      distance: INFINITY,
       isStart: row === starTile.row && col === starTile.col,
       isTraversed: false,
       parent: null,
@@ -45,21 +45,11 @@ export const createNewGrid = (grid: Grid, row: number, col: number) => {
 
 export const isEqual = (a: Tile, b: Tile) => a.row === b.row && a.col === b.col;
 
-export const isRowColEqual = (row: number, col: number, tile: Tile) =>
-  row === tile.row && col === tile.col;
-
-export const sleep = (ms: number) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
-
-/**
- * @FIXME
- */
-
 export const resetGrid = (grid: Grid, starTile: Tile, endTile: Tile) => {
   for (let row = 0; row < MAX_ROWS; row++) {
     for (let col = 0; col < Max_COLS; col++) {
       const tile = grid[row][col];
-      tile.distance = Infinity;
+      tile.distance = INFINITY;
       tile.isTraversed = false;
       tile.isPath = false;
       tile.parent = null;
@@ -84,3 +74,5 @@ export const resetGrid = (grid: Grid, starTile: Tile, endTile: Tile) => {
   }
 };
 
+export const delay = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));

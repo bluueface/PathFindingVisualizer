@@ -1,7 +1,9 @@
-import { AlgorithmSelect, MazeSelect, SpeedSelect, Tile } from "./types";
+import { AlgorithmSelect, SpeedSelect, Tile } from "./types";
 
 export const MAX_ROWS = 39;
 export const Max_COLS = 49;
+
+export const INFINITY = 99999999999;
 
 export const START_TILE: Tile = {
   row: 1,
@@ -36,16 +38,10 @@ export const END_TILE_STYLE = TILE_STYLE + "bg-red-400";
 export const WALL_TILE_STYLE = TILE_STYLE + "bg-gray-400";
 export const PATH_TILE_STYLE = TILE_STYLE + "bg-green-500";
 
-export const MAZES: MazeSelect[] = [
-  { name: "No Maze", value: "NONE" },
-  { name: "Binary Tree", value: "BINARY_TREE" },
-  { name: "Recursive Division", value: "RECURSIVE_DIVISION" },
-];
-
 export const SPEEDS: SpeedSelect[] = [
-  { name: "Slow", value: 2 },
-  { name: "Medium", value: 1 },
-  { name: "Fast", value: 0.5 },
+  { name: "Slow", value: 10 },
+  { name: "Medium", value: 5 },
+  { name: "Fast", value: 0 },
 ];
 
 export const ALGORITHMS: AlgorithmSelect[] = [
@@ -55,5 +51,4 @@ export const ALGORITHMS: AlgorithmSelect[] = [
   { name: "Depth First Search", value: "DFS" },
 ];
 
-export const SLEEP_TIME = 8;
-export const EXTENDED_SLEEP_TIME = 30;
+export const SLEEP_TIME = 30;

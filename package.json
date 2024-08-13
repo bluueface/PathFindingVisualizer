@@ -9,7 +9,7 @@
     "prettier": "prettier --write 'client/src/**/*.{ts,tsx}' 'server/src/**/*.{ts,js}'",
     "prettier:check": "prettier --check 'client/src/**/*.{ts,tsx}' 'server/src/**/*.{ts,js}'",
     "client": "npm run start --prefix client",
-    "server": "nodemon --watch server/src --ext ts,js,json --exec ts-node server/src/app.ts",
+    "server": "nodemon --watch server/src --ext ts,js,json --exec ts-node server/src/server.ts",
     "start": "concurrently \"npm run client\" \"npm run server\""
   },
   "devDependencies": {

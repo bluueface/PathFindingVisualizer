@@ -1,5 +1,7 @@
-import { Max_COLS, MAX_ROWS } from "../utils/constants";
-import { Grid, Tile } from "../utils/types";
+import { Max_COLS, MAX_ROWS } from "./constants";
+import { Grid, Tile } from "./types";
+
+export const isEqual = (a: Tile, b: Tile) => a.row === b.row && a.col === b.col;
 
 export const getUntraversedNeighbors = (grid: Grid, tile: Tile) => {
   const { row, col } = tile;
@@ -19,3 +21,15 @@ export const getUntraversedNeighbors = (grid: Grid, tile: Tile) => {
   }
   return neighbors.filter((neighbor) => !neighbor.isTraversed);
 };
+
+export const dropFromQueue = (tile: Tile, queue: Tile[]) => {
+  for (let i = 0; i < queue.length; i++) {
+    if (isEqual(tile, queue[i])) {
+      queue.splice(i, 1);
+      break;
+    }
+  }
+};
+
+export const delay = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
