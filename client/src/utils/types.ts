@@ -1,5 +1,10 @@
 export type Algorithm = "DIJKSTRA" | "A_STAR" | "BFS" | "DFS";
 
+export type AlgorithmSelect = {
+  name: string;
+  value: Algorithm;
+};
+
 export type Maze = "NONE" | "BINARY_TREE" | "RECURSIVE_DIVISION";
 
 export type MazeSelect = {

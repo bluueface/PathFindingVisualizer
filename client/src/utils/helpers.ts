@@ -83,3 +83,4 @@ export const resetGrid = (grid: Grid, starTile: Tile, endTile: Tile) => {
     }
   }
 };
+

@@ -14,7 +14,7 @@ const App = () => {
       <TileProvider>
         <SpeedProvider>
           <div className="h-screen w-screen flex flex-col">
-            <Header />
+            <Header isVisualizationRunningRef={isVisualizationRunningRef} />
             <GridComponent
               isVisualizationRunningRef={isVisualizationRunningRef}
             />

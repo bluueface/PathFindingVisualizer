@@ -1,4 +1,4 @@
-import { MazeSelect, SpeedSelect, Tile } from "./types";
+import { AlgorithmSelect, MazeSelect, SpeedSelect, Tile } from "./types";
 
 export const MAX_ROWS = 39;
 export const Max_COLS = 49;
@@ -47,3 +47,13 @@ export const SPEEDS: SpeedSelect[] = [
   { name: "Medium", value: 1 },
   { name: "Fast", value: 0.5 },
 ];
+
+export const ALGORITHMS: AlgorithmSelect[] = [
+  { name: "Dijkstra", value: "DIJKSTRA" },
+  { name: "A-Start", value: "A_STAR" },
+  { name: "Breath First Search", value: "BFS" },
+  { name: "Depth First Search", value: "DFS" },
+];
+
+export const SLEEP_TIME = 8;
+export const EXTENDED_SLEEP_TIME = 30;

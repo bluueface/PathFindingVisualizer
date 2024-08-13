@@ -8,7 +8,7 @@ interface Props {
   handlerRunVisualizer: MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button: React.FunctionComponent<Props> = (props) => {
+const PlayButton: React.FunctionComponent<Props> = (props) => {
   const { isDisabled, isGraphVisualized, handlerRunVisualizer } = props;
   return (
     <button
@@ -25,4 +25,4 @@ const Button: React.FunctionComponent<Props> = (props) => {
   );
 };
 
-export default Button;
+export default PlayButton;
