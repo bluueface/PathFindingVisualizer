@@ -14,12 +14,12 @@ const PlayButton: React.FunctionComponent<Props> = (props) => {
     <button
       disabled={isDisabled}
       onClick={runVisualizer}
-      className="disabled:pointer-events-none disabled:opacity-50 transition ease-in rounded-full p-2.5 shadow-md bg-green-500 hover:bg-green-600 border-none active:ring-green-300 focus:outline-none focus:ring focus:ring-green-300 focus:opacity-30"
+      className={`flex justify-center transition ease-in rounded-md p-1 shadow-md ${isGraphVisualized ? "bg-red-600" : "bg-green-600"} disabled:bg-gray-700 ${isGraphVisualized ? "hover:bg-red-500" : "hover:bg-green-500"} border-none`}
     >
       {isGraphVisualized ? (
-        <GrPowerReset className="w-5 h-5" />
+        <GrPowerReset className="w-8 h-8" />
       ) : (
-        <BsFillPlayFill className="w-5 h-5" />
+        <BsFillPlayFill className="w-8 h-8" />
       )}
     </button>
   );

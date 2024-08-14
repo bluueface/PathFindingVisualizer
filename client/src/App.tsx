@@ -13,8 +13,8 @@ const App = () => {
     <VisualizerProvider>
       <TileProvider>
         <SpeedProvider>
-          <div className="h-screen w-screen flex flex-col">
-            <Header isVisualizationRunningRef={isVisualizationRunningRef} />
+          <div className="flex flex-col gap-10">
+            <Header />
             <GridComponent
               isVisualizationRunningRef={isVisualizationRunningRef}
             />

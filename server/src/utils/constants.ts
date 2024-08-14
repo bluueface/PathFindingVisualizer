@@ -1,5 +1,5 @@
-export const MAX_ROWS = 39;
-export const Max_COLS = 49;
+export const MAX_ROWS = 28;
+export const Max_COLS = 50;
 
 export const INFINITY = 99999999999;
 

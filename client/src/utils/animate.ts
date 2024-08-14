@@ -1,6 +1,6 @@
 import { PATH_TILE_STYLE, SLEEP_TIME, TRAVERSED_TILE_STYLE } from "./constants";
 import { isEqual } from "./helpers";
-import { Speed, Tile } from "./types";
+import { Tile } from "./types";
 
 export const animateTraversedTile = (traversedTile: Tile) => {
   document.getElementById(
@@ -11,7 +11,7 @@ export const animateTraversedTile = (traversedTile: Tile) => {
 export const animatePath = (
   path: Tile[],
   startTile: Tile,
-  endTile: Tile,
+  endTile: Tile
 ): Promise<void> => {
   return new Promise((resolve) => {
     for (let i = 0; i < path.length; i++) {

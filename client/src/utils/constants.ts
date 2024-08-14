@@ -1,7 +1,7 @@
 import { AlgorithmSelect, SpeedSelect, Tile } from "./types";
 
-export const MAX_ROWS = 39;
-export const Max_COLS = 49;
+export const MAX_ROWS = 28;
+export const Max_COLS = 50;
 
 export const INFINITY = 99999999999;
 
@@ -30,13 +30,13 @@ export const END_TILE: Tile = {
 };
 
 export const TILE_STYLE =
-  "lg:w-[17px] md:w-[15px] sx:w-[8px] w-[7px] lg: h-[17px] md:h-[15px] sx:h-[8px] h-[7px] border-t border-r border-sky-200 ";
+  "w-[2%] lg:h-[17px] md:h-[15px] sx:h-[8px] h-[7px] border-t border-r border-[#B3D1D9] ";
 
-export const TRAVERSED_TILE_STYLE = TILE_STYLE + "bg-cyan-400";
-export const START_TILE_STYLE = TILE_STYLE + "bg-green-400";
-export const END_TILE_STYLE = TILE_STYLE + "bg-red-400";
-export const WALL_TILE_STYLE = TILE_STYLE + "bg-gray-400";
-export const PATH_TILE_STYLE = TILE_STYLE + "bg-green-500";
+export const TRAVERSED_TILE_STYLE = TILE_STYLE + "bg-gray-400";
+export const START_TILE_STYLE = TILE_STYLE + "bg-green-700";
+export const END_TILE_STYLE = TILE_STYLE + "bg-red-500";
+export const WALL_TILE_STYLE = TILE_STYLE + "bg-orange-600";
+export const PATH_TILE_STYLE = TILE_STYLE + "bg-[#2166df]";
 
 export const SPEEDS: SpeedSelect[] = [
   { name: "Slow", value: 10 },
@@ -46,9 +46,9 @@ export const SPEEDS: SpeedSelect[] = [
 
 export const ALGORITHMS: AlgorithmSelect[] = [
   { name: "Dijkstra", value: "DIJKSTRA" },
-  { name: "A-Start", value: "A_STAR" },
-  { name: "Breath First Search", value: "BFS" },
-  { name: "Depth First Search", value: "DFS" },
+  { name: "A-*", value: "A_STAR" },
+  { name: "BFS", value: "BFS" },
+  { name: "DFS", value: "DFS" },
 ];
 
 export const SLEEP_TIME = 30;

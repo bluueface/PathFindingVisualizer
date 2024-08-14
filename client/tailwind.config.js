@@ -7,19 +7,19 @@ module.exports = {
         traversed: {
           "0%": {
             transform: "scale(0.3)",
-            backgroundColor: "#9333eabf",
+            backgroundColor: "#2166df",
             borderRadius: "100%",
           },
           "50%": {
-            backgroundColor: "#4f46e5bf",
+            backgroundColor: "#4878cc",
           },
           "75%": {
             transform: "scale(1.2)",
-            backgroundColor: "#3b82f6bf",
+            backgroundColor: "#6d89b9",
           },
           "100%": {
             transform: "scale(1)",
-            backgroundColor: "#22d3ee",
+            backgroundColor: "#9CA3AF",
           },
         },
         path: {
