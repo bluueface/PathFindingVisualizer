@@ -52,4 +52,4 @@ export const ALGORITHMS: AlgorithmSelect[] = [
 export const SLEEP_TIME = 30;
 
 export const ICON_STYLE =
-  "w-[2rem] h-[2rem] cursor-pointer transition duration-500 ease-in-out transform";
+  "cursor-pointer transition duration-500 ease-in-out transform hover:rotate-360";

@@ -15,10 +15,10 @@ const Header = () => {
 
   return (
     <div className="flex items-center justify-between min-h-[5rem] bg-[#010409] border-b border-b-[#30363D] shadow-gray-600 sm:px-40 px-0">
-      <div className="flex gap-2 items-center ">
+      <div className="flex gap-4 items-center ">
         <Icon
           IconName={SiIconfinder}
-          styling="w-[3rem] h-[3rem] hover:text-red-500 hover:rotate-360"
+          styling="hover:text-red-500 w-[2.3rem] h-[2.3rem]"
           onClick={() => handleModeChange("dark")}
         />
         <span className="lg:flex hidden text-2xl pl-1">
@@ -28,20 +28,20 @@ const Header = () => {
       <div className="flex items-center gap-6">
         <IconLink
           IconName={FiGithub}
-          styling="hover:text-violet-500 hover:rotate-360"
+          styling="hover:text-violet-500 w-[1.5rem] h-[1.5rem]"
           link="https://github.com/bluueface/PathFindingVisualizer"
         />
 
         {mode === "light" ? (
           <Icon
             IconName={MdOutlineDarkMode}
-            styling="hover:text-sky-500 hover:rotate-360"
+            styling="hover:text-sky-500 w-[1.5rem] h-[1.5rem]"
             onClick={() => handleModeChange("dark")}
           />
         ) : (
           <Icon
             IconName={MdOutlineLightMode}
-            styling="hover:text-yellow-500 hover:rotate-360"
+            styling="hover:text-yellow-500 w-[1.5rem] h-[1.5rem]"
             onClick={() => handleModeChange("light")}
           />
         )}

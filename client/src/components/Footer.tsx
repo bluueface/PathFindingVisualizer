@@ -9,12 +9,12 @@ const Footer = () => {
       <div className="flex gap-2">
         <IconLink
           IconName={FiGithub}
-          styling="hover:text-violet-500 hover:rotate-360"
+          styling="hover:text-violet-500 w-[1.5rem] h-[1.5rem]"
           link="https://github.com/bluueface"
         />
         <IconLink
           IconName={CiLinkedin}
-          styling="hover:text-blue-500 hover:rotate-360"
+          styling="hover:text-blue-500 w-[1.5rem] h-[1.5rem]"
           link="https://github.com/bluueface"
         />
       </div>
