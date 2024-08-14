@@ -3,6 +3,10 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      rotate: {
+        30: "30deg",
+        360: "360deg",
+      },
       keyframes: {
         traversed: {
           "0%": {

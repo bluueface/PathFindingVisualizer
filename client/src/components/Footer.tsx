@@ -1,7 +1,23 @@
+import { FiGithub } from "react-icons/fi";
+import { CiLinkedin } from "react-icons/ci";
+import { IconLink } from "./Icon";
+
 const Footer = () => {
   return (
-    <footer className="w-full min-h-32 flex items-center justify-center bg-black font-bold opacity-90">
-      <div>Aziz Ouadoud © 2024</div>
+    <footer className="self-center w-full sm:w-[60%] min-h-32 flex items-center justify-between  font-bold border-t border-[#30363D]">
+      <div className="">Copyright © 2024 | All rights reserved.</div>
+      <div className="flex gap-2">
+        <IconLink
+          IconName={FiGithub}
+          styling="hover:text-violet-500 hover:rotate-360"
+          link="https://github.com/bluueface"
+        />
+        <IconLink
+          IconName={CiLinkedin}
+          styling="hover:text-blue-500 hover:rotate-360"
+          link="https://github.com/bluueface"
+        />
+      </div>
     </footer>
   );
 };

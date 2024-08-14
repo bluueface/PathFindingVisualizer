@@ -32,3 +32,5 @@ export type Result = {
   path?: Tile[];
   traversedTiles?: Tile[];
 };
+
+export type Mode = "dark" | "light";

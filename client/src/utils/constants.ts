@@ -29,7 +29,7 @@ export const END_TILE: Tile = {
   parent: null,
 };
 
-export const TILE_STYLE = `w-[${100 / Max_COLS}%] lg:h-[17px] md:h-[15px] sx:h-[8px] h-[7px] border-t border-r border-[#B3D1D9] `;
+export const TILE_STYLE = `w-[2%] lg:h-[17px] md:h-[15px] sx:h-[8px] h-[7px] border-t border-r border-[#B3D1D9] `;
 export const TRAVERSED_TILE_STYLE = TILE_STYLE + "bg-gray-400";
 export const START_TILE_STYLE = TILE_STYLE + "bg-green-700";
 export const END_TILE_STYLE = TILE_STYLE + "bg-red-500";
@@ -50,3 +50,6 @@ export const ALGORITHMS: AlgorithmSelect[] = [
 ];
 
 export const SLEEP_TIME = 30;
+
+export const ICON_STYLE =
+  "w-[2rem] h-[2rem] cursor-pointer transition duration-500 ease-in-out transform";
