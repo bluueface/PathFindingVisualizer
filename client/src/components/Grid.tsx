@@ -2,6 +2,7 @@ import { useVisualizer } from "../hooks/useVisualizer";
 import {
   ALGORITHMS,
   END_TILE_STYLE,
+  MAX_ROWS,
   PATH_TILE_STYLE,
   SPEEDS,
   START_TILE_STYLE,
@@ -145,59 +146,66 @@ const GridComponent: React.FunctionComponent<Props> = (props) => {
   );
 
   return (
-    <div className="flex flex-col sm:flex-row gap-10 justify-between px-6 py-2 m-2">
-      <div className="sm:w-[22%] w-full flex flex-col gap-4">
-        <div className="flex flex-col gap-5 px-3 py-5 rounded-md bg-[#161B22] border border-[#30363D]">
-          <Select
-            label="Algorithm"
-            value={algorithm}
-            options={ALGORITHMS}
-            onChange={(e) => setAlgorithm(e.target.value as Algorithm)}
-          />
-          <Select
-            label="Speed"
-            value={speed}
-            options={SPEEDS}
-            onChange={(e) => setSpeed(parseInt(e.target.value) as Speed)}
-          />
-          <PlayButton
-            isDisabled={isDisabled}
-            isGraphVisualized={isGraphVisualized}
-            runVisualizer={runVisualizer}
-          />
-        </div>
-        <div className="flex flex-col gap-4 px-3 py-5 rounded-md bg-[#161B22] border border-[#30363D]">
-          {renderLegend("Traversed tile", TRAVERSED_TILE_STYLE)}
-          {renderLegend("Untraversed tile", TILE_STYLE)}
-          {renderLegend("Path tile", PATH_TILE_STYLE)}
-          {renderLegend("Start tile", START_TILE_STYLE)}
-          {renderLegend("End tile", END_TILE_STYLE)}
-          {renderLegend("Wall tile", WALL_TILE_STYLE)}
-        </div>
-      </div>
-      <div className="w-[66%] flex flex-col flex-1 bg-[#161B22]">
-        {grid.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex w-[100%]">
-            {row.map((tile, tileIndex) => {
-              const { isEnd, isStart, isPath, isTraversed, isWall } = tile;
-              return (
-                <TileComponent
-                  key={tileIndex}
-                  row={tile.row}
-                  col={tile.col}
-                  isEnd={isEnd}
-                  isStart={isStart}
-                  isPath={isPath}
-                  isTraversed={isTraversed}
-                  isWall={isWall}
-                  handleMouseDown={() => handleMouseDown(tile.row, tile.col)}
-                  handleMouseUp={() => handleMouseUp(tile.row, tile.col)}
-                  handleMouseEnter={() => handleMouseEnter(tile.row, tile.col)}
-                />
-              );
-            })}
+    <div className="flex-1 flex justify-center">
+      <div className="flex flex-col sm:flex-row gap-10 justify-center flex-1 max-w-[1317px]">
+        <div className="sm:w-[22%] w-full flex flex-col gap-4">
+          <div className="flex flex-col gap-5 px-3 py-5 rounded-md bg-[#161B22] border border-[#30363D]">
+            <Select
+              label="Algorithm"
+              value={algorithm}
+              options={ALGORITHMS}
+              onChange={(e) => setAlgorithm(e.target.value as Algorithm)}
+            />
+            <Select
+              label="Speed"
+              value={speed}
+              options={SPEEDS}
+              onChange={(e) => setSpeed(parseInt(e.target.value) as Speed)}
+            />
+            <PlayButton
+              isDisabled={isDisabled}
+              isGraphVisualized={isGraphVisualized}
+              runVisualizer={runVisualizer}
+            />
           </div>
-        ))}
+          <div className="flex flex-col gap-4 px-3 py-5 rounded-md bg-[#161B22] border border-[#30363D]">
+            {renderLegend("Traversed tile", TRAVERSED_TILE_STYLE)}
+            {renderLegend("Untraversed tile", TILE_STYLE)}
+            {renderLegend("Path tile", PATH_TILE_STYLE)}
+            {renderLegend("Start tile", START_TILE_STYLE)}
+            {renderLegend("End tile", END_TILE_STYLE)}
+            {renderLegend("Wall tile", WALL_TILE_STYLE)}
+          </div>
+        </div>
+        <div className="flex flex-col bg-[#161B22] h-fit sm:w-[66%] w-full">
+          {grid.map((row, rowIndex) => (
+            <div
+              key={rowIndex}
+              className={`flex w-[100%] h-[${100 / MAX_ROWS}%]`}
+            >
+              {row.map((tile, tileIndex) => {
+                const { isEnd, isStart, isPath, isTraversed, isWall } = tile;
+                return (
+                  <TileComponent
+                    key={tileIndex}
+                    row={tile.row}
+                    col={tile.col}
+                    isEnd={isEnd}
+                    isStart={isStart}
+                    isPath={isPath}
+                    isTraversed={isTraversed}
+                    isWall={isWall}
+                    handleMouseDown={() => handleMouseDown(tile.row, tile.col)}
+                    handleMouseUp={() => handleMouseUp(tile.row, tile.col)}
+                    handleMouseEnter={() =>
+                      handleMouseEnter(tile.row, tile.col)
+                    }
+                  />
+                );
+              })}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
