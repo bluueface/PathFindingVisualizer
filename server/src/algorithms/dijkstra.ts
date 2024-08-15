@@ -63,5 +63,5 @@ export const dijkstra = async (
   }
 
   // Send the final path to the client
-  ws.send(JSON.stringify({ type: "path", path, traversedTiles } as Result));
+  ws.send(JSON.stringify({ type: "path", path } as Result));
 };

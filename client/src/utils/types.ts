@@ -30,7 +30,6 @@ export type Result = {
   type: "traversed" | "path";
   currentTile?: Tile;
   path?: Tile[];
-  traversedTiles?: Tile[];
 };
 
 export type Mode = "dark" | "light";
