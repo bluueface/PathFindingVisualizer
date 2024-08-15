@@ -44,9 +44,6 @@ export const SPEEDS: SpeedSelect[] = [
 
 export const ALGORITHMS: AlgorithmSelect[] = [
   { name: "Dijkstra", value: "DIJKSTRA" },
-  { name: "A-*", value: "A_STAR" },
-  { name: "BFS", value: "BFS" },
-  { name: "DFS", value: "DFS" },
 ];
 
 export const SLEEP_TIME = 30;

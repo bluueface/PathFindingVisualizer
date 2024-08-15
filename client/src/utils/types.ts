@@ -1,4 +1,4 @@
-export type Algorithm = "DIJKSTRA" | "A_STAR" | "BFS" | "DFS";
+export type Algorithm = "DIJKSTRA";
 
 export type AlgorithmSelect = {
   name: string;
